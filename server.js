@@ -6,8 +6,6 @@ const path = require('path');
 //connect database
 connectDB();
 
-app.get('/', (req, res) => res.send('Tracr Running'));
-
 //Init Midddleware
 app.use(express.json({ extended: false }));
 
