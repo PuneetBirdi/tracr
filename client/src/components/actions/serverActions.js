@@ -20,7 +20,27 @@ export const loadServers = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    dispatch({ type: SERVER_ERROR, payload: err });
+    dispatch({ type: SERVER_ERROR, payload: err.response.data.msg });
+  }
+};
+
+export const addServer = (newServer) => (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const res = axios.post('api/servers', newServer, config);
+    dispatch({
+      type: ADD_SERVER,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: SERVER_ERROR,
+      payload: err,
+    });
   }
 };
 

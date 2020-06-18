@@ -12,6 +12,7 @@ import About from './components/pages/About';
 import ManageStaff from './components/pages/ManageStaff';
 //LAYOUT COMPONENTS
 import NavBar from './components/layout/NavBar';
+import AddServer from './components/modals/AddServer';
 //STATE AND CONTEXT MANAGEMENT
 import { Provider } from 'react-redux';
 import Store from './store';
@@ -35,6 +36,7 @@ const App = () => {
               <PrivateRoute exact path='/staff' component={ManageStaff} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/about' component={About} />
+              <AddServer />
             </Switch>
           </div>
         </Fragment>

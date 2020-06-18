@@ -77,7 +77,7 @@ const Login = ({
             type='submit'
             name='action'
           >
-            Submit
+            Login
           </button>
         </div>
       </form>

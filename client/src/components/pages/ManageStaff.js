@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { loadServers } from '../actions/serverActions';
 import Preloader from '../layout/Preloader';
 import AddBtn from '../layout/AddBtn';
+import 'materialize-css/dist/css/materialize.min.css';
+import AddServer from '../modals/AddServer';
 
 const ManageStaff = ({ loading, servers: { servers }, loadServers }) => {
   useEffect(() => {
@@ -24,7 +26,7 @@ const ManageStaff = ({ loading, servers: { servers }, loadServers }) => {
           <h5>Staff</h5>
         </li>
         {servers.map((server) => (
-          <li class='collection-item avatar'>
+          <li class='collection-item avatar' key={server._id}>
             <p>
               {server.name}
               <br></br>
@@ -36,7 +38,7 @@ const ManageStaff = ({ loading, servers: { servers }, loadServers }) => {
           </li>
         ))}
       </ul>
-      <AddBtn />
+      <AddServer />
     </Fragment>
   );
 };

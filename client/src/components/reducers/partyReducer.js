@@ -14,6 +14,7 @@ export default (state = initialState, action) => {
     case ADD_PARTY:
       return {
         ...state,
+        parties: [...state.parties, action.payload],
         loading: false,
       };
     case GET_PARTIES:

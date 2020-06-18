@@ -5,6 +5,7 @@ import { addParty } from '../actions/partyActions';
 import { getParties } from '../actions/partyActions';
 import Preloader from '../layout/Preloader';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import ServerList from '../inputs/ServerList';
 
 const Home = ({ getParties, addParty, loadUser, auth: { user, loading } }) => {
   //COMPONENT STATE----------------------------------
@@ -36,7 +37,7 @@ const Home = ({ getParties, addParty, loadUser, auth: { user, loading } }) => {
     setTime('');
     setNotes('');
   };
-  
+
   const addGuest = (index, name) => {
     let array = [...guests];
     array[index] = name;
@@ -132,9 +133,7 @@ const Home = ({ getParties, addParty, loadUser, auth: { user, loading } }) => {
                 <option value='' disabled defaultValue>
                   Select Server
                 </option>
-                <option value='5edff0d27413db210cc6224f'>Amanda</option>
-                <option value='5edff0d27413db210cc6224f'>Jared</option>
-                <option value='5edff0d27413db210cc6224f'>Scott</option>
+                <ServerList />
               </select>
             </div>
             <div className='input-field col s6'>
