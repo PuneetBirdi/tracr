@@ -13,7 +13,6 @@ import { loadVenue } from './venueActions';
 
 // logging in the user, and grabbing the JWT token
 export const login = (formData) => async (dispatch) => {
-  dispatch(setLoading());
   const config = {
     headers: {
       'Content-Type': 'application/json',

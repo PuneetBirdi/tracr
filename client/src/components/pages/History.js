@@ -38,14 +38,14 @@ const History = ({ party: { parties }, loading, getParties }) => {
           <CollapsibleItem
             expanded={false}
             header={
-              <Fragment>
+              <div className='flex fullWidth'>
                 <div className=''>
                   <strong>{item.contact.name}</strong>{' '}
                 </div>
                 <div className=''>
                   <Moment format='MMMM Do YYYY, h:mm a'>{item.time}</Moment>
                 </div>
-              </Fragment>
+              </div>
             }
             node='div'
             key={item._id}
@@ -63,7 +63,23 @@ const History = ({ party: { parties }, loading, getParties }) => {
                   <small>Email: {item.contact.email}</small>
                 </li>
               </ul>
-              <ul></ul>
+              <ul>
+                <p>Guest List</p>
+                {item.guests.map((guest) => (
+                  <li>
+                    <small>{guest}</small>
+                  </li>
+                ))}
+              </ul>
+              <ul>
+                <p>Visit Information</p>
+                <li>
+                  <small>Server: {item.server}</small>
+                </li>
+                <li>
+                  <small>Table Number: {item.table}</small>
+                </li>
+              </ul>
             </div>
           </CollapsibleItem>
         ))}

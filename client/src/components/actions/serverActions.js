@@ -1,4 +1,10 @@
-import { GET_SERVERS, ADD_SERVER, DELETE_SERVER, SERVER_ERROR } from './types';
+import {
+  GET_SERVERS,
+  ADD_SERVER,
+  DELETE_SERVER,
+  SERVER_ERROR,
+  SET_LOADING,
+} from './types';
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -14,7 +20,7 @@ export const loadServers = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    dispatch({ type: VENUE_ERROR });
+    dispatch({ type: SERVER_ERROR, payload: err });
   }
 };
 

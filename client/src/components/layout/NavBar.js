@@ -23,7 +23,7 @@ const NavBar = ({ auth, logout }) => {
         <Link to='/history'>History</Link>
       </li>
       <li>
-        <Link to='/history'>Manage Staff</Link>
+        <Link to='/staff'>Manage Staff</Link>
       </li>
       <li>
         <a href='#' onClick={(e) => logout()}>

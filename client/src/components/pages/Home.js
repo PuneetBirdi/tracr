@@ -13,7 +13,7 @@ const Home = ({ getParties, addParty, loadUser, auth: { user, loading } }) => {
     contactEmail: '',
     contactPhone: '',
   });
-  const [guests, setGuests] = useState([]);
+  const [guests, setGuests] = useState(['']);
   const [server, setServer] = useState('');
   const [table, setTable] = useState('');
   const [time, setTime] = useState('');
@@ -30,12 +30,13 @@ const Home = ({ getParties, addParty, loadUser, auth: { user, loading } }) => {
       contactEmail: '',
       contactPhone: '',
     });
-    setGuests([]);
+    setGuests(['']);
     setServer('');
     setTable('');
     setTime('');
     setNotes('');
   };
+  
   const addGuest = (index, name) => {
     let array = [...guests];
     array[index] = name;

@@ -27,7 +27,6 @@ export const addParty = (formData) => async (dispatch) => {
 };
 
 export const getParties = () => async (dispatch) => {
-  dispatch(setLoading());
   try {
     const res = await axios.get('/api/parties/history');
     dispatch({

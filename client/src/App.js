@@ -9,6 +9,7 @@ import Login from './components/auth/Login';
 import Home from './components/pages/Home';
 import History from './components/pages/History';
 import About from './components/pages/About';
+import ManageStaff from './components/pages/ManageStaff';
 //LAYOUT COMPONENTS
 import NavBar from './components/layout/NavBar';
 //STATE AND CONTEXT MANAGEMENT
@@ -31,6 +32,7 @@ const App = () => {
             <Switch>
               <PrivateRoute exact path='/' component={Home} />
               <PrivateRoute exact path='/history' component={History} />
+              <PrivateRoute exact path='/staff' component={ManageStaff} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/about' component={About} />
             </Switch>
