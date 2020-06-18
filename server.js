@@ -16,9 +16,9 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/servers', require('./routes/servers'));
 app.use('/api/parties', require('./routes/parties'));
 
-//Server static assets in production
+// Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
-  //set static folder
+  // Set static folder
   app.use(express.static('client/build'));
 
   app.get('*', (req, res) => {

@@ -21,6 +21,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         token: action.payload.token,
+        loading: false
       };
     case USER_LOADED:
       return {

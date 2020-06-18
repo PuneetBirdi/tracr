@@ -4,8 +4,8 @@ const { check, validationResult } = require('express-validator');
 const Server = require('../models/Server');
 const auth = require('../middleware/auth');
 
-//@router       GET api/parties/history
-//@desc         Get all the parties that have been to this venue
+//@router       GET api/servers
+//@desc         Get all servers associated with this venue
 //@access       Private
 router.get('/', auth, async (req, res) => {
   try {

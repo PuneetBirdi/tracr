@@ -46,13 +46,6 @@ const Login = ({
     //eslint-disable-next-line
   }, [error, isAuthenticated, history]);
 
-  if (loading) {
-    return (
-      <div className='wrapper'>
-        <Preloader />
-      </div>
-    );
-  }
   return (
     <div style={{ width: '30%', margin: '0 auto', alignSelf: 'center' }}>
       <form onSubmit={onSubmit}>
