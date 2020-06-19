@@ -31,6 +31,7 @@ export const addServer = (newServer) => (dispatch) => {
     },
   };
   try {
+    setLoading();
     const res = axios.post('api/servers', newServer, config);
     dispatch({
       type: ADD_SERVER,
@@ -40,6 +41,22 @@ export const addServer = (newServer) => (dispatch) => {
     dispatch({
       type: SERVER_ERROR,
       payload: err,
+    });
+  }
+};
+
+//Delete a tech
+export const deleteServer = (id) => async (dispatch) => {
+  try {
+    await axios.delete(`/api/servers/${id}`);
+    dispatch({
+      type: DELETE_SERVER,
+      payload: id,
+    });
+  } catch (err) {
+    dispatch({
+      type: SERVER_ERROR,
+      payload: err.response.statusText,
     });
   }
 };

@@ -1,13 +1,15 @@
 import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { getParties } from '../actions/partyActions';
+import { loadServers } from '../actions/serverActions';
 import Preloader from '../layout/Preloader';
 import { CollapsibleItem, Collapsible } from 'react-materialize';
 import Moment from 'react-moment';
 
-const History = ({ party: { parties }, loading, getParties }) => {
+const History = ({ servers, party: { parties }, loading, getParties }) => {
   useEffect(() => {
     getParties();
+    loadServers();
     //eslint-disable-next-line
   }, []);
 
@@ -92,6 +94,7 @@ const History = ({ party: { parties }, loading, getParties }) => {
 const mapStateToProps = (state) => ({
   auth: state.auth,
   party: state.party,
+  servers: state.servers,
 });
 
-export default connect(mapStateToProps, { getParties })(History);
+export default connect(mapStateToProps, { loadServers, getParties })(History);

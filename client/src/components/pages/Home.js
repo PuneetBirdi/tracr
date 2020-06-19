@@ -152,6 +152,7 @@ const Home = ({ getParties, addParty, loadUser, auth: { user, loading } }) => {
                 type='datetime-local'
                 required
                 value={time}
+                defaultTime='1:15'
                 onChange={(e) => setTime(e.target.value)}
               ></input>
             </div>

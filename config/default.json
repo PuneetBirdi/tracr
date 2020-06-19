@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://root:rootpassword@tracr-sb0dm.mongodb.net/main?retryWrites=true&w=majority",
+  "jwtSecret": "mySecretToken"
+}

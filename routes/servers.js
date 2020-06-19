@@ -71,4 +71,28 @@ router.post(
   }
 );
 
+
+//@route    DELETE api/servers/:id
+//@desc     DELETE a server
+//@access   Private, manager only
+router.delete(`/:id`, auth, async (req,res)=>{
+  try {
+    //locate the server by id
+    let server = await Server.findById(req.params.id);
+
+    //if the server doesn't exist in the database return a 404
+    if(!server) return res.status(404).json({msg: 'Server not found.'});
+
+    //make sure that this server corresponds with the same venue as the user trying to delete it
+    if(server.venue.toString() != req.user.venue){
+      return res.status(401).json({msg: 'Not authorized.'});
+    }
+
+    //if checks above are passed, delete the Server
+    await Server.findByIdAndRemove(req.params.id);
+  } catch (error) {
+    
+  }
+})
+
 module.exports = router;

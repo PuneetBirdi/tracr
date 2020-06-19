@@ -11,7 +11,7 @@ export const loadVenue = () => async (dispatch) => {
     const res = await axios.get('api/venues');
     dispatch({
       type: GET_VENUE,
-      payload: res.data,
+      payload: res.data[0],
     });
     console.log(res);
   } catch (err) {

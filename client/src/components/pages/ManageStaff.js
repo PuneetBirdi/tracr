@@ -31,10 +31,9 @@ const ManageStaff = ({ loading, servers: { servers }, loadServers }) => {
               {server.name}
               <br></br>
               <small>{server.email}</small>
+              <br></br>
+              <small>{server.phone}</small>
             </p>
-            <a href='#!' class='secondary-content'>
-              <i class='material-icons'>edit</i>
-            </a>
           </li>
         ))}
       </ul>

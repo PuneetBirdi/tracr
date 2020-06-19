@@ -24,6 +24,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         servers: [...state.servers.servers, action.payload],
+        loading: false,
+      };
+    case DELETE_SERVER:
+      return {
+        ...state,
+        techs: state.servers.filter((server) => server.id !== action.payload),
+        loading: false,
       };
     case SET_LOADING:
       return {

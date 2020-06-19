@@ -10,6 +10,7 @@ const AddServer = ({ addServer, auth: { user, loading } }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [current, setCurrent] = useState('');
 
   const onSubmit = () => {
     if (name.trim() === '') {
@@ -21,8 +22,8 @@ const AddServer = ({ addServer, auth: { user, loading } }) => {
         email: email,
         phone: phone,
       };
-      console.log(server);
       addServer(server);
+      clearFields();
     }
   };
 
@@ -40,6 +41,7 @@ const AddServer = ({ addServer, auth: { user, loading } }) => {
           onClick={onSubmit}
           node='button'
           waves='green'
+          modal='close'
           className='green lighten-2'
         >
           Save
@@ -107,7 +109,7 @@ const AddServer = ({ addServer, auth: { user, loading } }) => {
             <input
               type='text'
               name='name'
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setPhone(e.target.value)}
             />
             <label htmlFor='name' className='active'>
               Email
