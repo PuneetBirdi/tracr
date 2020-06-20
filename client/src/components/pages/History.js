@@ -10,6 +10,7 @@ const History = ({ servers, party: { parties }, loading, getParties }) => {
   useEffect(() => {
     getParties();
     loadServers();
+    console.log(parties);
     //eslint-disable-next-line
   }, []);
 
@@ -76,7 +77,7 @@ const History = ({ servers, party: { parties }, loading, getParties }) => {
               <ul>
                 <p>Visit Information</p>
                 <li>
-                  <small>Server: {item.server}</small>
+                  <small>Server: {item.server.name}</small>
                 </li>
                 <li>
                   <small>Table Number: {item.table}</small>

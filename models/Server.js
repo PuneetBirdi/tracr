@@ -12,9 +12,9 @@ const ServerSchema = new mongoose.Schema({
     type: String,
   },
   venue: {
-   type: mongoose.Schema.Types.ObjectId,
-   ref: 'venues',
-   required: true
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'venues',
+    required: true,
   },
 });
 

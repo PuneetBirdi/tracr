@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
-const Server = require('../models/Party');
+const Server = require('../models/Server');
 const User = require('../models/User');
 const Party = require('../models/Party');
 const auth = require('../middleware/auth');
@@ -11,9 +11,8 @@ const auth = require('../middleware/auth');
 //@access       Private
 router.get('/history', auth, async (req, res) => {
   try {
-    const parties = await Party.find({ venue: req.user.venue }).sort({
-      date: -1,
-    });
+    const parties = await Party.find().populate('server', ['name']);
+    console.log(parties);
     result = parties.reverse();
     res.json(result);
   } catch (err) {

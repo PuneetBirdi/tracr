@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const PartySchema = new mongoose.Schema({
   venue: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'venues',
+    ref: 'venue',
     required: true,
   },
   time: {
@@ -12,7 +12,7 @@ const PartySchema = new mongoose.Schema({
   },
   server: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'servers',
+    ref: 'server',
     required: true,
   },
   table: {
