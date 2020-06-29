@@ -12,6 +12,8 @@ const initialState = {
   isAuthenticated: false,
   user: null,
   error: null,
+  token: localStorage.getItem('token'),
+  loading: null,
 };
 
 export default (state = initialState, action) => {
@@ -21,7 +23,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         token: action.payload.token,
-        loading: false
+        isAuthenticated: true,
+        loading: false,
       };
     case USER_LOADED:
       return {
@@ -39,8 +42,6 @@ export default (state = initialState, action) => {
         token: null,
         isAuthenticated: false,
         user: null,
-        loading: false,
-        error: action.payload,
       };
     case SET_LOADING:
       return {

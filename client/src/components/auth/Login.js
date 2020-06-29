@@ -34,14 +34,10 @@ const Login = ({
     }
   };
 
-  //Check if the user is already logged in
+  // //Check if the user is already logged in
   useEffect(() => {
-    loadUser();
     if (isAuthenticated) {
-      console.log('work1');
       history.push('/');
-    } else if (error) {
-      M.toast({ html: 'Invalid Credentials.', classes: 'red' });
     }
     //eslint-disable-next-line
   }, [error, isAuthenticated, history]);

@@ -37,8 +37,10 @@ export const login = (formData) => async (dispatch) => {
 //Use the token to grab the rest of the user information
 export const loadUser = () => async (dispatch) => {
   //This line sets the retrived token into a global header (function in a different file) so that it doesn't have to be referenced for every axios call
-  setAuthToken(localStorage.token);
-  dispatch(loadVenue());
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+    dispatch(loadVenue());
+  }
 
   try {
     const res = await axios.get('api/auth');
@@ -47,7 +49,7 @@ export const loadUser = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    dispatch({ type: AUTH_ERROR, payload: err.response.data.msg });
+    dispatch({ type: AUTH_ERROR });
   }
 };
 

@@ -7,7 +7,7 @@ import Preloader from '../layout/Preloader';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import ServerList from '../inputs/ServerList';
 
-const Home = ({ getParties, addParty, loadUser, auth: { user, loading } }) => {
+const Home = ({ addParty, loadUser, auth: { user, loading } }) => {
   //COMPONENT STATE----------------------------------
   const [contact, setContact] = useState({
     contactName: '',
@@ -19,11 +19,6 @@ const Home = ({ getParties, addParty, loadUser, auth: { user, loading } }) => {
   const [table, setTable] = useState('');
   const [time, setTime] = useState('');
   const [notes, setNotes] = useState('');
-
-  useEffect(() => {
-    loadUser();
-    //eslint-disable-next-line
-  }, []);
 
   const clearForm = () => {
     setContact({

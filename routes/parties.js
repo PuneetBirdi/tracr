@@ -12,7 +12,6 @@ const auth = require('../middleware/auth');
 router.get('/history', auth, async (req, res) => {
   try {
     const parties = await Party.find().populate('server', ['name']);
-    console.log(parties);
     result = parties.reverse();
     res.json(result);
   } catch (err) {

@@ -17,29 +17,42 @@ import AddServer from './components/modals/AddServer';
 import { Provider } from 'react-redux';
 import Store from './store';
 //SET GLOBAL HEADERS FOR AUTHENTICATION
+import setAuthToken from './components/utils/setAuthToken';
+import store from './store';
+import { loadUser } from './components/actions/authActions';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 const App = () => {
   useEffect(() => {
     //Initialize Materialize JS
     M.AutoInit();
-  });
+    //load the user
+    store.dispatch(loadUser);
+  }, []);
 
   return (
     <Provider store={Store}>
       <Router>
-        <Fragment>
-          <NavBar />
-          <div className='container'>
-            <Switch>
-              <PrivateRoute exact path='/' component={Home} />
-              <PrivateRoute exact path='/history' component={History} />
-              <PrivateRoute exact path='/staff' component={ManageStaff} />
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/about' component={About} />
-              <AddServer />
-            </Switch>
-          </div>
-        </Fragment>
+        <body>
+          <Fragment>
+            <NavBar />
+            <main>
+              <div className='container'>
+                <Switch>
+                  <PrivateRoute exact path='/' component={Home} />
+                  <PrivateRoute exact path='/history' component={History} />
+                  <PrivateRoute exact path='/staff' component={ManageStaff} />
+                  <Route exact path='/login' component={Login} />
+                  <Route exact path='/about' component={About} />
+                  <AddServer />
+                </Switch>
+              </div>
+            </main>
+          </Fragment>
+        </body>
       </Router>
     </Provider>
   );

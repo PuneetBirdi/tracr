@@ -10,7 +10,6 @@ const History = ({ servers, party: { parties }, loading, getParties }) => {
   useEffect(() => {
     getParties();
     loadServers();
-    console.log(parties);
     //eslint-disable-next-line
   }, []);
 
@@ -27,7 +26,7 @@ const History = ({ servers, party: { parties }, loading, getParties }) => {
         <div className='nav-wrapper'>
           <form>
             <div className='input-field green'>
-              <input id='search' type='search' required />
+              <input id='search' type='search' placeholder='Keyword' required />
               <label className='label-icon' for='search'>
                 <i className='material-icons'>search</i>
               </label>
