@@ -75,6 +75,12 @@ const Login = ({
           >
             Login
           </button>
+          <div className=''>
+            <p>Test credentials:</p>
+            <strong>Email: mgr@gmail.com</strong>
+            <br></br>
+            <strong>Password: 1452</strong>
+          </div>
         </div>
       </form>
     </div>
