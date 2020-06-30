@@ -39,6 +39,9 @@ const Login = ({
     if (isAuthenticated) {
       history.push('/');
     }
+    if (error) {
+      M.toast({ html: error, classes: 'red' });
+    }
     //eslint-disable-next-line
   }, [error, isAuthenticated, history]);
 

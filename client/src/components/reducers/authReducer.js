@@ -42,6 +42,12 @@ export default (state = initialState, action) => {
         token: null,
         isAuthenticated: false,
         user: null,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
       };
     case SET_LOADING:
       return {

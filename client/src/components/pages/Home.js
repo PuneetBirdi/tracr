@@ -125,9 +125,6 @@ const Home = ({ addParty, loadUser, auth: { user, loading } }) => {
                 value={server}
                 onChange={(e) => setServer(e.target.value)}
               >
-                <option value='' disabled defaultValue>
-                  Select Server
-                </option>
                 <ServerList />
               </select>
             </div>

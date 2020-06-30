@@ -20,6 +20,9 @@ const ServerList = ({ loading, servers: { servers }, loadServers }) => {
   }
   return (
     <Fragment>
+      <option value='' disabled defaultValue>
+        Select Server
+      </option>
       {servers.map((server) => (
         <option key={server._id} value={server._id}>
           {server.name}

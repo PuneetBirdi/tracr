@@ -11,7 +11,9 @@ const auth = require('../middleware/auth');
 //@access       Private
 router.get('/history', auth, async (req, res) => {
   try {
-    const parties = await Party.find().populate('server', ['name']);
+    const parties = await Party.find({
+      venue: req.user.venue,
+    }).populate('server', ['name']);
     result = parties.reverse();
     res.json(result);
   } catch (err) {

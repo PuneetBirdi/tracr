@@ -31,6 +31,11 @@ export const login = (formData) => async (dispatch) => {
       type: LOGIN_FAIL,
       payload: err.response.data.msg,
     });
+    setTimeout(() => {
+      dispatch({
+        type: CLEAR_ERRORS,
+      });
+    }, 1000);
   }
 };
 

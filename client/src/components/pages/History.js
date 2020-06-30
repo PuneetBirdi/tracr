@@ -19,75 +19,82 @@ const History = ({ servers, party: { parties }, loading, getParties }) => {
         <Preloader />
       </div>
     );
-  }
-  return (
-    <div className='my-2'>
-      <nav>
-        <div className='nav-wrapper'>
-          <form>
-            <div className='input-field green'>
-              <input id='search' type='search' placeholder='Keyword' required />
-              <label className='label-icon' for='search'>
-                <i className='material-icons'>search</i>
-              </label>
-              <i className='material-icons'>close</i>
-            </div>
-          </form>
-        </div>
-      </nav>
-      <Collapsible accordion popout className='fullWidth'>
-        {parties.map((item) => (
-          <CollapsibleItem
-            expanded={false}
-            header={
-              <div className='flex fullWidth'>
-                <div className=''>
-                  <strong>{item.contact.name}</strong>{' '}
-                </div>
-                <div className=''>
-                  <Moment format='MMMM Do YYYY, h:mm a'>{item.time}</Moment>
-                </div>
+  } else if (parties.length < 1) {
+    return <p className='center-align'>No Parties Recorded</p>;
+  } else
+    return (
+      <div className='my-2'>
+        <nav>
+          <div className='nav-wrapper'>
+            <form>
+              <div className='input-field green'>
+                <input
+                  id='search'
+                  type='search'
+                  placeholder='Keyword'
+                  required
+                />
+                <label className='label-icon' for='search'>
+                  <i className='material-icons'>search</i>
+                </label>
+                <i className='material-icons'>close</i>
               </div>
-            }
-            node='div'
-            key={item._id}
-          >
-            <div className='flex'>
-              <ul>
-                <p>Contact Information</p>
-                <li>
-                  <small>Name: {item.contact.name}</small>
-                </li>
-                <li>
-                  <small>Phone: {item.contact.phone}</small>
-                </li>
-                <li>
-                  <small>Email: {item.contact.email}</small>
-                </li>
-              </ul>
-              <ul>
-                <p>Guest List</p>
-                {item.guests.map((guest) => (
+            </form>
+          </div>
+        </nav>
+        <Collapsible accordion popout className='fullWidth'>
+          {parties.map((item) => (
+            <CollapsibleItem
+              expanded={false}
+              header={
+                <div className='flex fullWidth'>
+                  <div className=''>
+                    <strong>{item.contact.name}</strong>{' '}
+                  </div>
+                  <div className=''>
+                    <Moment format='MMMM Do YYYY, h:mm a'>{item.time}</Moment>
+                  </div>
+                </div>
+              }
+              node='div'
+              key={item._id}
+            >
+              <div className='flex'>
+                <ul>
+                  <p>Contact Information</p>
                   <li>
-                    <small>{guest}</small>
+                    <small>Name: {item.contact.name}</small>
                   </li>
-                ))}
-              </ul>
-              <ul>
-                <p>Visit Information</p>
-                <li>
-                  <small>Server: {item.server.name}</small>
-                </li>
-                <li>
-                  <small>Table Number: {item.table}</small>
-                </li>
-              </ul>
-            </div>
-          </CollapsibleItem>
-        ))}
-      </Collapsible>
-    </div>
-  );
+                  <li>
+                    <small>Phone: {item.contact.phone}</small>
+                  </li>
+                  <li>
+                    <small>Email: {item.contact.email}</small>
+                  </li>
+                </ul>
+                <ul>
+                  <p>Guest List</p>
+                  {item.guests.map((guest) => (
+                    <li>
+                      <small>{guest}</small>
+                    </li>
+                  ))}
+                </ul>
+                <ul>
+                  <p>Visit Information</p>
+                  <li>
+                    <small>Server: {item.server.name}</small>
+                  </li>
+                  <li>
+                    <small>Table Number: {item.table}</small>
+                  </li>
+                </ul>
+              </div>
+            </CollapsibleItem>
+          ))}
+        </Collapsible>
+      </div>
+    );
 };
 
 //This function connects the component to Redux, and imports the state into the component AS A PROP

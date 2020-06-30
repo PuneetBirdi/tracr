@@ -25,17 +25,23 @@ const ManageStaff = ({ loading, servers: { servers }, loadServers }) => {
         <li class='collection-header'>
           <h5>Staff</h5>
         </li>
-        {servers.map((server) => (
-          <li class='collection-item avatar' key={server._id}>
-            <p>
-              {server.name}
-              <br></br>
-              <small>{server.email}</small>
-              <br></br>
-              <small>{server.phone}</small>
-            </p>
+        {servers.length < 1 ? (
+          <li class='collection-item avatar'>
+            <p className='center-align'>Please Add Staff</p>
           </li>
-        ))}
+        ) : (
+          servers.map((server) => (
+            <li class='collection-item avatar' key={server._id}>
+              <p>
+                {server.name}
+                <br></br>
+                <small>{server.email}</small>
+                <br></br>
+                <small>{server.phone}</small>
+              </p>
+            </li>
+          ))
+        )}
       </ul>
       <AddServer />
     </Fragment>

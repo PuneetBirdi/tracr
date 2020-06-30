@@ -10,7 +10,7 @@ export const GET_PARTIES = 'GET_PARTIES';
 export const ADD_PARTY = 'ADD_PARTY';
 export const DELETE_PARTY = 'DELETE_PARTY';
 export const PARTY_ERROR = 'PARTY_ERROR';
-export const SEARCH_PARTIES = 'SEARCH_PARTIES'
+export const SEARCH_PARTIES = 'SEARCH_PARTIES';
 
 //SERVER TYPES
 export const GET_SERVERS = 'GET_SERVERS';
@@ -22,5 +22,6 @@ export const SERVER_ERROR = 'SERVER_ERROR';
 export const GET_VENUE = 'GET_VENUE';
 export const VENUE_ERROR = 'VENUE_ERROR';
 
-//LOADING
+//LOADING/ERRORS
 export const SET_LOADING = 'SET_LOADING';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
