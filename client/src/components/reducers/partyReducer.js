@@ -3,11 +3,13 @@ import {
   ADD_PARTY,
   PARTY_ERROR,
   GET_PARTIES,
+  FILTER_PARTIES,
 } from '../actions/types';
 
 const initialState = {
   parties: null,
   error: null,
+  filtered: null,
 };
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -26,6 +28,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+    case FILTER_PARTIES:
+      return {
+        ...state,
+        filtered: state.parties.filter((party) => {
+          const regex = new RegExp(`${action.payload}`, 'gi');
+          return (
+            party.contact.name.match(regex) || party.server.name.match(regex)
+          );
+        }),
       };
     case SET_LOADING:
       return {

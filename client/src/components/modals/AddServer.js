@@ -42,7 +42,7 @@ const AddServer = ({ addServer, auth: { user, loading } }) => {
           node='button'
           waves='green'
           modal='close'
-          className='green lighten-2'
+          className='green white-text'
         >
           Save
         </Button>,
@@ -51,7 +51,7 @@ const AddServer = ({ addServer, auth: { user, loading } }) => {
           modal='close'
           node='button'
           waves='red'
-          className='red lighten-2'
+          className='red white-text'
           onClick={clearFields}
         >
           Cancel

@@ -11,6 +11,7 @@ export const ADD_PARTY = 'ADD_PARTY';
 export const DELETE_PARTY = 'DELETE_PARTY';
 export const PARTY_ERROR = 'PARTY_ERROR';
 export const SEARCH_PARTIES = 'SEARCH_PARTIES';
+export const FILTER_PARTIES = 'FILTER_PARTIES';
 
 //SERVER TYPES
 export const GET_SERVERS = 'GET_SERVERS';

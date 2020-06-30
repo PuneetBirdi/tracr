@@ -1,4 +1,10 @@
-import { SET_LOADING, GET_PARTIES, ADD_PARTY, PARTY_ERROR } from './types';
+import {
+  SET_LOADING,
+  GET_PARTIES,
+  ADD_PARTY,
+  PARTY_ERROR,
+  FILTER_PARTIES,
+} from './types';
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -39,6 +45,11 @@ export const getParties = () => async (dispatch) => {
       payload: error,
     });
   }
+};
+
+//filter parties
+export const filterParties = (text) => async (dispatch) => {
+  dispatch({ type: FILTER_PARTIES, payload: text });
 };
 
 //Set loading to true
