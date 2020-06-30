@@ -39,11 +39,11 @@ const Login = ({
     if (isAuthenticated) {
       history.push('/');
     }
-    if (error) {
+    if (error !== null) {
       M.toast({ html: error, classes: 'red' });
     }
     //eslint-disable-next-line
-  }, [error, isAuthenticated, history]);
+  }, [isAuthenticated, history]);
 
   return (
     <div style={{ width: '30%', margin: '0 auto', alignSelf: 'center' }}>

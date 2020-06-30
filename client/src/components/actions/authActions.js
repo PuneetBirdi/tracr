@@ -35,7 +35,7 @@ export const login = (formData) => async (dispatch) => {
       dispatch({
         type: CLEAR_ERRORS,
       });
-    }, 1000);
+    }, 500);
   }
 };
 
