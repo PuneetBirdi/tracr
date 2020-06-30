@@ -71,6 +71,9 @@ router.post(
   }
 );
 
+//@router       PUT api/servers/:id
+//@desc         Update server information
+//@access       Private
 
 //@route    DELETE api/servers/:id
 //@desc     DELETE a server

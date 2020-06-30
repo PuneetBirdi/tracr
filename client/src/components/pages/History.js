@@ -33,8 +33,8 @@ const History = ({
     return <p className='center-align'>No Parties Recorded</p>;
   } else
     return (
-      <div className='my-2'>
-        <nav>
+      <div className='my-2 row'>
+        <nav className='col-6'>
           <div className='nav-wrapper'>
             <form onSubmit={(e) => e.preventDefault()}>
               <div className='input-field green'>

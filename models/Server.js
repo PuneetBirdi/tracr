@@ -11,6 +11,10 @@ const ServerSchema = new mongoose.Schema({
   phone: {
     type: String,
   },
+  active: {
+    type: Boolean,
+    default: true,
+  },
   venue: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'venues',

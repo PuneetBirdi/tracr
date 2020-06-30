@@ -38,12 +38,11 @@ const Login = ({
   useEffect(() => {
     if (isAuthenticated) {
       history.push('/');
-    }
-    if (error !== null) {
+    } else if (error !== null) {
       M.toast({ html: error, classes: 'red' });
     }
     //eslint-disable-next-line
-  }, [isAuthenticated, history]);
+  }, [history, isAuthenticated]);
 
   return (
     <div style={{ width: '30%', margin: '0 auto', alignSelf: 'center' }}>
