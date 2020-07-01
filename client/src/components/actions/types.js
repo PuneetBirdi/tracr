@@ -10,8 +10,10 @@ export const GET_PARTIES = 'GET_PARTIES';
 export const ADD_PARTY = 'ADD_PARTY';
 export const DELETE_PARTY = 'DELETE_PARTY';
 export const PARTY_ERROR = 'PARTY_ERROR';
+export const CLEAR_PARTIES = 'CLEAR_PARTIES';
 export const SEARCH_PARTIES = 'SEARCH_PARTIES';
 export const FILTER_PARTIES = 'FILTER_PARTIES';
+export const CLEAR_FILTER = 'CLEAR_FILTER'
 
 //SERVER TYPES
 export const GET_SERVERS = 'GET_SERVERS';

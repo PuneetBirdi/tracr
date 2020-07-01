@@ -1,6 +1,10 @@
 import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { getParties, filterParties } from '../actions/partyActions';
+import {
+  getParties,
+  filterParties,
+  clearParties,
+} from '../actions/partyActions';
 import { loadServers } from '../actions/serverActions';
 import Preloader from '../layout/Preloader';
 import { CollapsibleItem, Collapsible } from 'react-materialize';
@@ -12,8 +16,10 @@ const History = ({
   loading,
   getParties,
   filterParties,
+  clearParties,
 }) => {
   useEffect(() => {
+    clearParties();
     getParties();
     loadServers();
     //eslint-disable-next-line
@@ -173,4 +179,5 @@ export default connect(mapStateToProps, {
   loadServers,
   getParties,
   filterParties,
+  clearParties,
 })(History);

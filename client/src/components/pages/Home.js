@@ -14,36 +14,38 @@ const Home = ({ addParty, loadUser, auth: { user, loading } }) => {
     contactEmail: '',
     contactPhone: '',
   });
-  const [guests, setGuests] = useState(['']);
+  const [guests, setGuests] = useState(['', '']);
   const [server, setServer] = useState('');
   const [table, setTable] = useState('');
   const [time, setTime] = useState('');
   const [notes, setNotes] = useState('');
 
+  //CLEAR FORM-----------------------------
   const clearForm = () => {
     setContact({
       contactName: '',
       contactEmail: '',
       contactPhone: '',
     });
-    setGuests(['']);
+    setGuests(['', '', '' ,'' ,'' ,'']);
     setServer('');
     setTable('');
     setTime('');
     setNotes('');
   };
 
+  //AGG GUEST TO COMPONENT STATE----------------------
   const addGuest = (index, name) => {
     let array = [...guests];
     array[index] = name;
     setGuests(array);
   };
 
-  //=============ON SUBMIT FUNCTION
+  //ON SUBMIT FUNCTION--------------------
   const onSubmit = (e) => {
     e.preventDefault();
 
-    //build party object
+    //BUILD PARTY OBJECT ---------------------------------
     const party = {
       venue: user.venue,
       contact: {

@@ -4,6 +4,8 @@ import {
   PARTY_ERROR,
   GET_PARTIES,
   FILTER_PARTIES,
+  CLEAR_PARTIES,
+  CLEAR_FILTER,
 } from '../actions/types';
 
 const initialState = {
@@ -24,6 +26,12 @@ export default (state = initialState, action) => {
         parties: action.payload.data,
         loading: false,
       };
+    case CLEAR_PARTIES:
+      return {
+        ...state,
+        parties: null,
+        filtered: null,
+      };
     case PARTY_ERROR:
       return {
         ...state,
@@ -38,6 +46,11 @@ export default (state = initialState, action) => {
             party.contact.name.match(regex) || party.server.name.match(regex)
           );
         }),
+      };
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null,
       };
     case SET_LOADING:
       return {
