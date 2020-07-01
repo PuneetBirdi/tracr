@@ -12,6 +12,7 @@ const initialState = {
   parties: null,
   error: null,
   filtered: null,
+  loading: false,
 };
 export default (state = initialState, action) => {
   switch (action.type) {

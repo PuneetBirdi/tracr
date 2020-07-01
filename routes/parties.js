@@ -5,20 +5,37 @@ const Server = require('../models/Server');
 const User = require('../models/User');
 const Party = require('../models/Party');
 const auth = require('../middleware/auth');
+const { query } = require('express');
 
 //@router       GET api/parties/history
 //@desc         Get all the parties that have been to this venue
 //@access       Private
 router.get('/history', auth, async (req, res) => {
-  try {
-    const parties = await Party.find({
-      venue: req.user.venue,
-    }).populate('server', ['name']);
-    result = parties.reverse();
-    res.json(result);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
+  const contactName = req.query.contactName;
+  const server = req.query.server;
+  if (JSON.stringify(req.query) === '{}') {
+    try {
+      const parties = await Party.find({
+        venue: req.user.venue,
+      }).populate('server', ['name']);
+      result = parties.reverse();
+      res.json(result);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  } else if (req.query) {
+    try {
+      const parties = await Party.find({
+        venue: req.user.venue,
+        server: req.query.server,
+      }).populate('server', ['name']);
+      result = parties.reverse();
+      res.json(result);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
   }
 });
 

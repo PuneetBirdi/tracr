@@ -34,18 +34,35 @@ export const addParty = (formData) => async (dispatch) => {
   }
 };
 
-export const getParties = () => async (dispatch) => {
-  try {
-    const res = await axios.get('/api/parties/history');
-    dispatch({
-      type: GET_PARTIES,
-      payload: res,
-    });
-  } catch (error) {
-    dispatch({
-      type: PARTY_ERROR,
-      payload: error,
-    });
+export const getParties = (query) => async (dispatch) => {
+  if (!query) {
+    try {
+      const res = await axios.get('/api/parties/history');
+      dispatch({
+        type: GET_PARTIES,
+        payload: res,
+      });
+    } catch (error) {
+      dispatch({
+        type: PARTY_ERROR,
+        payload: error,
+      });
+    }
+  } else if (query) {
+    try {
+      const res = await axios.get(
+        `/api/parties/history?contactName=${query.contactName}&server=${query.server}`
+      );
+      dispatch({
+        type: GET_PARTIES,
+        payload: res,
+      });
+    } catch (error) {
+      dispatch({
+        type: PARTY_ERROR,
+        payload: error,
+      });
+    }
   }
 };
 

@@ -27,7 +27,7 @@ const Home = ({ addParty, loadUser, auth: { user, loading } }) => {
       contactEmail: '',
       contactPhone: '',
     });
-    setGuests(['', '', '' ,'' ,'' ,'']);
+    setGuests(['', '', '', '', '', '']);
     setServer('');
     setTable('');
     setTime('');
@@ -79,7 +79,6 @@ const Home = ({ addParty, loadUser, auth: { user, loading } }) => {
           <div className='col s6'>
             <div className='input-field col s12'>
               <input
-                placeholder='Main Contact Name'
                 id='contact-name'
                 type='text'
                 className='validate'
@@ -90,6 +89,7 @@ const Home = ({ addParty, loadUser, auth: { user, loading } }) => {
                   setContact({ contactName: e.target.value });
                 }}
               />
+              <label htmlFor='contact-name'>Contact Name</label>
             </div>
             <div className='input-field col s6'>
               <input
