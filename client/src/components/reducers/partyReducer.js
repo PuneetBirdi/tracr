@@ -44,7 +44,7 @@ export default (state = initialState, action) => {
         filtered: state.parties.filter((party) => {
           const regex = new RegExp(`${action.payload}`, 'gi');
           return (
-            party.contact.name.match(regex) || party.server.name.match(regex)
+            party.contact.name.match(regex) || party.guests.includes(regex)
           );
         }),
       };

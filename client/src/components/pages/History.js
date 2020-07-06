@@ -10,6 +10,7 @@ import Preloader from '../layout/Preloader';
 import { CollapsibleItem, Collapsible } from 'react-materialize';
 import Moment from 'react-moment';
 import ServerList from '../inputs/ServerList';
+import { DatePicker } from 'react-materialize';
 
 const History = ({
   servers,
@@ -27,7 +28,7 @@ const History = ({
   }, []);
   //COMPONENT STATE----------------------------------
   const [server, setServer] = useState('');
-  const [contact, setContact] = useState('');
+  const [time, setTime] = useState('');
   const onChange = (e) => {
     filterParties(e.target.value);
   };
@@ -36,11 +37,12 @@ const History = ({
   const onSubmit = (e) => {
     e.preventDefault();
     //CREATE QUERY OBJECT
-    const query = { contactName: contact, server: server };
+    const query = { time: time, server: server };
     getParties(query);
   };
 
   const clearQuery = () => {
+    setServer('');
     getParties();
   };
 
@@ -57,20 +59,6 @@ const History = ({
           <div className='row'>
             <form className='col s12 pad-1' onSubmit={onSubmit}>
               <div className='col s6'>
-                <div className='input-field col s12'>
-                  <input
-                    id='contact-name'
-                    type='text'
-                    className='validate'
-                    value={contact}
-                    onChange={(e) => {
-                      setContact(e.target.value);
-                    }}
-                  />
-                  <label htmlFor='contact-name'>Contact Name</label>
-                </div>
-              </div>
-              <div className='col s6'>
                 <div className='input-field col-12'>
                   <select
                     className='browser-default'
@@ -85,6 +73,7 @@ const History = ({
                   </select>
                 </div>
               </div>
+              <div className='col s6'></div>
               <div className='right-align'>
                 <button
                   className='btn waves-effect mx-1 blue waves-light'
@@ -95,7 +84,6 @@ const History = ({
                 </button>
                 <button
                   className='btn waves-effect mx-1 red waves-light'
-                  name='action'
                   onClick={(e) => {
                     clearQuery();
                   }}
@@ -108,11 +96,11 @@ const History = ({
           <nav>
             <div className='nav-wrapper'>
               <form onSubmit={(e) => e.preventDefault()}>
-                <div className='input-field green'>
+                <div className='input-field green text-white'>
                   <input
                     id='search'
                     type='search'
-                    placeholder='Filter by : Contact Name or Server Name'
+                    placeholder='Filter by : Contact Name'
                     required
                     onChange={onChange}
                   />

@@ -27,10 +27,9 @@ if (localStorage.token) {
 
 const App = () => {
   useEffect(() => {
+    store.dispatch(loadUser());
     //Initialize Materialize JS
     M.AutoInit();
-    //load the user
-    store.dispatch(loadUser);
   }, []);
 
   return (

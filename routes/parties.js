@@ -11,7 +11,6 @@ const { query } = require('express');
 //@desc         Get all the parties that have been to this venue
 //@access       Private
 router.get('/history', auth, async (req, res) => {
-  const contactName = req.query.contactName;
   const server = req.query.server;
   if (JSON.stringify(req.query) === '{}') {
     try {
@@ -27,7 +26,6 @@ router.get('/history', auth, async (req, res) => {
   } else if (req.query) {
     try {
       const parties = await Party.find({
-        venue: req.user.venue,
         server: req.query.server,
       }).populate('server', ['name']);
       result = parties.reverse();
