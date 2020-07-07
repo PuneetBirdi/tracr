@@ -2,7 +2,6 @@ import {
   GET_SERVERS,
   ADD_SERVER,
   DELETE_SERVER,
-  SERVER_ERROR,
   SET_LOADING,
 } from '../actions/types';
 

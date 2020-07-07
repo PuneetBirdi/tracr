@@ -33,9 +33,9 @@ const App = () => {
   }, []);
 
   return (
-    <Provider store={Store}>
-      <Router>
-        <body>
+    <body>
+      <Provider store={Store}>
+        <Router>
           <Fragment>
             <NavBar />
             <main>
@@ -51,9 +51,9 @@ const App = () => {
               </div>
             </main>
           </Fragment>
-        </body>
-      </Router>
-    </Provider>
+        </Router>
+      </Provider>
+    </body>
   );
 };
 

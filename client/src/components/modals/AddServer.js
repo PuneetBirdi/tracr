@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+
 import { Modal, Button } from 'react-materialize';
 import { addServer } from '../actions/serverActions';
 
@@ -10,7 +10,6 @@ const AddServer = ({ addServer, auth: { user, loading } }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [current, setCurrent] = useState('');
 
   const onSubmit = () => {
     if (name.trim() === '') {
@@ -119,11 +118,6 @@ const AddServer = ({ addServer, auth: { user, loading } }) => {
       </div>
     </Modal>
   );
-};
-
-const modalStyle = {
-  width: '50%',
-  height: '50%',
 };
 
 //This function connects the component to Redux, and imports the state into the component AS A PROP

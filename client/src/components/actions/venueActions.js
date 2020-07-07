@@ -6,14 +6,12 @@ import setAuthToken from '../utils/setAuthToken';
 export const loadVenue = () => async (dispatch) => {
   //This line sets the retrived token into a global header (function in a different file) so that it doesn't have to be referenced for every axios call
   setAuthToken(localStorage.token);
-  console.log(localStorage.token);
   try {
     const res = await axios.get('api/venues');
     dispatch({
       type: GET_VENUE,
       payload: res.data[0],
     });
-    console.log(res);
   } catch (err) {
     dispatch({ type: VENUE_ERROR, payload: err.response.data.msg });
   }

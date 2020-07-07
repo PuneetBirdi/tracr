@@ -10,7 +10,6 @@ import Preloader from '../layout/Preloader';
 import { CollapsibleItem, Collapsible } from 'react-materialize';
 import Moment from 'react-moment';
 import ServerList from '../inputs/ServerList';
-import { DatePicker } from 'react-materialize';
 
 const History = ({
   servers,
@@ -28,7 +27,6 @@ const History = ({
   }, []);
   //COMPONENT STATE----------------------------------
   const [server, setServer] = useState('');
-  const [time, setTime] = useState('');
   const onChange = (e) => {
     filterParties(e.target.value);
   };
@@ -37,7 +35,7 @@ const History = ({
   const onSubmit = (e) => {
     e.preventDefault();
     //CREATE QUERY OBJECT
-    const query = { time: time, server: server };
+    const query = { server: server };
     getParties(query);
   };
 
@@ -62,7 +60,6 @@ const History = ({
                 <div className='input-field col-12'>
                   <select
                     className='browser-default'
-                    required
                     value={server}
                     onChange={(e) => setServer(e.target.value)}
                   >
@@ -104,7 +101,7 @@ const History = ({
                     required
                     onChange={onChange}
                   />
-                  <label className='label-icon' for='search'>
+                  <label className='label-icon' htmlFor='search'>
                     <i className='material-icons'>search</i>
                   </label>
                   <i className='material-icons'>close</i>
@@ -151,8 +148,8 @@ const History = ({
                       </ul>
                       <ul>
                         <p>Guest List</p>
-                        {item.guests.map((guest) => (
-                          <li>
+                        {item.guests.map((guest, key) => (
+                          <li key={key}>
                             <small>{guest}</small>
                           </li>
                         ))}
@@ -202,8 +199,8 @@ const History = ({
                       </ul>
                       <ul>
                         <p>Guest List</p>
-                        {item.guests.map((guest) => (
-                          <li>
+                        {item.guests.map((guest, key) => (
+                          <li key={key}>
                             <small>{guest}</small>
                           </li>
                         ))}

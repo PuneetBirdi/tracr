@@ -4,7 +4,6 @@ import {
   ADD_PARTY,
   PARTY_ERROR,
   FILTER_PARTIES,
-  CLEAR_FILTER,
   CLEAR_PARTIES,
 } from './types';
 import axios from 'axios';

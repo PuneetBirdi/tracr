@@ -1,8 +1,6 @@
 import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { loadServers } from '../actions/serverActions';
-import Preloader from '../layout/Preloader';
-import AddBtn from '../layout/AddBtn';
 import AddServer from '../modals/AddServer';
 
 const ServerList = ({ loading, servers: { servers }, loadServers }) => {
@@ -12,11 +10,7 @@ const ServerList = ({ loading, servers: { servers }, loadServers }) => {
   }, []);
 
   if (loading || servers === null) {
-    return (
-      <div className='wrapper'>
-        <Preloader />
-      </div>
-    );
+    return null;
   }
   return (
     <Fragment>

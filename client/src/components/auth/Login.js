@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import { login, loadUser } from '../actions/authActions';
-import Preloader from '../layout/Preloader';
+import { Redirect } from 'react-router-dom';
 
 const Login = ({
   history,
@@ -44,6 +44,9 @@ const Login = ({
     //eslint-disable-next-line
   }, [history, isAuthenticated]);
 
+  if (isAuthenticated) {
+    return <Redirect to='/' />;
+  }
   return (
     <div style={{ width: '30%', margin: '0 auto', alignSelf: 'center' }}>
       <form onSubmit={onSubmit}>

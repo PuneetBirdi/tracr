@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { loadUser } from '../actions/authActions';
 import { addParty } from '../actions/partyActions';
@@ -97,7 +97,7 @@ const Home = ({ addParty, loadUser, auth: { user, loading } }) => {
                 name='contact-phone'
                 type='tel'
                 className='validate'
-                pattern='[0-9]{10}'
+                pattern='[0-9]{10,}'
                 value={contact.contactPhone}
                 onChange={(e) =>
                   setContact({ ...contact, contactPhone: e.target.value })
@@ -149,7 +149,6 @@ const Home = ({ addParty, loadUser, auth: { user, loading } }) => {
                 type='datetime-local'
                 required
                 value={time}
-                defaultTime='1:15'
                 onChange={(e) => setTime(e.target.value)}
               ></input>
             </div>
@@ -159,53 +158,53 @@ const Home = ({ addParty, loadUser, auth: { user, loading } }) => {
           <div className='col s6'>
             <div className='input-field col s12'>
               <input
-                id='guest'
+                id='guest1'
                 type='text'
                 className='validate'
                 value={guests[1]}
                 onChange={(e) => addGuest(1, e.target.value)}
               />
-              <label htmlFor='guest'>Guest 2</label>
+              <label htmlFor='guest1'>Guest 2</label>
             </div>
             <div className='input-field col s12'>
               <input
-                id='guest'
+                id='guest2'
                 type='text'
                 className='validate'
                 value={guests[2]}
                 onChange={(e) => addGuest(2, e.target.value)}
               />
-              <label htmlFor='guest'>Guest 3</label>
+              <label htmlFor='guest2'>Guest 3</label>
             </div>
             <div className='input-field col s12'>
               <input
-                id='guest'
+                id='guest3'
                 type='text'
                 className='validate'
                 value={guests[3]}
                 onChange={(e) => addGuest(3, e.target.value)}
               />
-              <label htmlFor='guest'>Guest 4</label>
+              <label htmlFor='guest3'>Guest 4</label>
             </div>
             <div className='input-field col s12'>
               <input
-                id='guest'
+                id='guest4'
                 type='text'
                 className='validate'
                 value={guests[4]}
                 onChange={(e) => addGuest(4, e.target.value)}
               />
-              <label htmlFor='guest'>Guest 5</label>
+              <label htmlFor='guest4'>Guest 5</label>
             </div>
             <div className='input-field col s12'>
               <input
-                id='guest'
+                id='guest5'
                 type='text'
                 className='validate'
                 value={guests[5]}
                 onChange={(e) => addGuest(5, e.target.value)}
               />
-              <label htmlFor='guest'>Guest 6</label>
+              <label htmlFor='guest5'>Guest 6</label>
             </div>
           </div>
           <div className='col s6'>

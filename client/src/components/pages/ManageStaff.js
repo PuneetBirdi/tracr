@@ -2,7 +2,6 @@ import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { loadServers } from '../actions/serverActions';
 import Preloader from '../layout/Preloader';
-import AddBtn from '../layout/AddBtn';
 import 'materialize-css/dist/css/materialize.min.css';
 import AddServer from '../modals/AddServer';
 
