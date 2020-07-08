@@ -6,8 +6,13 @@ import { getParties } from '../actions/partyActions';
 import Preloader from '../layout/Preloader';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import ServerList from '../inputs/ServerList';
+import { Redirect } from 'react-router-dom';
 
-const Home = ({ addParty, loadUser, auth: { user, loading } }) => {
+const Home = ({
+  addParty,
+  loadUser,
+  auth: { isAuthenticated, user, loading },
+}) => {
   //COMPONENT STATE----------------------------------
   const [contact, setContact] = useState({
     contactName: '',

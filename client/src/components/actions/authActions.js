@@ -61,6 +61,7 @@ export const loadUser = () => async (dispatch) => {
 
 //Logout
 export const logout = () => (dispatch) => {
+  dispatch(setLoading());
   dispatch({
     type: LOGOUT,
   });

@@ -32,6 +32,7 @@ const NavBar = ({ auth, logout }) => {
       </li>
     </Fragment>
   );
+
   return (
     <Fragment>
       <nav className='blue darken-2'>
