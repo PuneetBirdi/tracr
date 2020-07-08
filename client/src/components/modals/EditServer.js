@@ -3,11 +3,11 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 
 import { Modal, Button } from 'react-materialize';
-import { addServer, setCurrentServer } from '../actions/serverActions';
+import { updateServer, setCurrentServer } from '../actions/serverActions';
 
 const EditServer = ({
   server,
-  addServer,
+  updateServer,
   current,
   setCurrentServer,
   auth: { user, loading },
@@ -21,20 +21,21 @@ const EditServer = ({
     if (server.name.trim() === '') {
       M.toast({ html: 'Please enter a name', classes: 'red' });
     } else {
-      const server = {
+      const updatedServer = {
         venue: user.venue,
         name: newName,
         email: newEmail,
         phone: newPhone,
-        _id: current._id,
+        id: server._id,
       };
-      console.log(server);
+      console.log(updatedServer);
+      updateServer(updatedServer);
     }
   };
 
-  const setCurrent = (e) => {
-    setCurrentServer(server);
-  };
+    const setCurrent = (e) => {
+      setCurrentServer(server);
+    };
 
   return (
     <Modal
@@ -135,6 +136,6 @@ const mapStateToProps = (state) => ({
   current: state.server.current,
 });
 
-export default connect(mapStateToProps, { addServer, setCurrentServer })(
+export default connect(mapStateToProps, { updateServer, setCurrentServer })(
   EditServer
 );

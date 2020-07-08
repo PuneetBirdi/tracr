@@ -133,7 +133,7 @@ const Home = ({ addParty, loadUser, auth: { user, loading } }) => {
                 <ServerList />
               </select>
             </div>
-            <div className='input-field col s6'>
+            <div className='input-field col s4'>
               <input
                 id='last_name'
                 type='number'
@@ -144,7 +144,7 @@ const Home = ({ addParty, loadUser, auth: { user, loading } }) => {
               />
               <label htmlFor='last_name'>Table Number</label>
             </div>
-            <div className='input-field col s6'>
+            <div className='input-field col s8'>
               <input
                 type='datetime-local'
                 required

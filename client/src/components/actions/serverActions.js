@@ -1,10 +1,11 @@
 import {
   GET_SERVERS,
   ADD_SERVER,
-  DELETE_SERVER,
+  REMOVE_SERVER,
   SERVER_ERROR,
   SET_LOADING,
   SET_CURRENT_SERVER,
+  UPDATE_SERVER,
 } from './types';
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
@@ -38,12 +39,43 @@ export const addServer = (newServer) => async (dispatch) => {
       type: ADD_SERVER,
       payload: res.data,
     });
+    console.log(res);
   } catch (err) {
     dispatch({
       type: SERVER_ERROR,
       payload: err,
     });
   }
+};
+
+export const updateServer = (updatedServer) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    setLoading();
+    const res = axios.put(
+      `/api/servers/${updatedServer.id}`,
+      updatedServer,
+      config
+    );
+    dispatch({
+      type: UPDATE_SERVER,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: SERVER_ERROR,
+      payload: err,
+    });
+  }
+};
+
+export const deactivateServer = (server) => async (dispatch) => {
+  updateServer(server);
+  dispatch({ type: REMOVE_SERVER, payload: server._id });
 };
 
 export const setCurrentServer = (server) => async (dispatch) => {
@@ -54,7 +86,7 @@ export const deleteServer = (id) => async (dispatch) => {
   try {
     await axios.delete(`/api/servers/${id}`);
     dispatch({
-      type: DELETE_SERVER,
+      type: REMOVE_SERVER,
       payload: id,
     });
   } catch (err) {

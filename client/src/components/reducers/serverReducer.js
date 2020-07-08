@@ -1,10 +1,11 @@
 import {
   GET_SERVERS,
   ADD_SERVER,
-  DELETE_SERVER,
+  REMOVE_SERVER,
   SET_LOADING,
   SERVER_ERROR,
   SET_CURRENT_SERVER,
+  UPDATE_SERVER,
 } from '../actions/types';
 
 const initialState = {
@@ -33,7 +34,14 @@ export default (state = initialState, action) => {
         ...state,
         current: action.payload,
       };
-    case DELETE_SERVER:
+    case UPDATE_SERVER:
+      return {
+        ...state,
+        servers: state.servers.map((server) =>
+          server._id === action.payload._id ? action.payload : server
+        ),
+      };
+    case REMOVE_SERVER:
       return {
         ...state,
         techs: state.servers.filter((server) => server.id !== action.payload),

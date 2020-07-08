@@ -13,6 +13,7 @@ import { loadVenue } from './venueActions';
 
 // logging in the user, and grabbing the JWT token
 export const login = (formData) => async (dispatch) => {
+  dispatch(setLoading());
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -46,8 +47,8 @@ export const loadUser = () => async (dispatch) => {
     setAuthToken(localStorage.token);
     dispatch(loadVenue());
   }
-
   try {
+    dispatch(setLoading());
     const res = await axios.get('api/auth');
     dispatch({
       type: USER_LOADED,

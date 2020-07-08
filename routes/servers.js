@@ -19,14 +19,14 @@ router.get('/', auth, async (req, res) => {
 });
 
 //@router      POST api/servers
-//@desc        Create/Update a server
+//@desc        Create a server
 //@access      Private
 router.post(
   '/',
   auth,
   [
     check('name', 'Name is required.').not().isEmpty(),
-    check('venue', 'This user must be associated with a venue.')
+    check('venue', 'This server must be associated with a venue.')
       .not()
       .isEmpty(),
   ],
@@ -38,37 +38,14 @@ router.post(
     }
 
     //destructure the body of the request
-    const { name, email, phone, id, status } = req.body;
+    const { name, email, phone } = req.body;
     const venue = req.user.venue;
-    const updatedServer = {
-      name: name,
-      email: email,
-      phone: phone,
-      venue: req.user.venue,
-      status,
-    };
-    console.log(updatedServer);
     try {
-      //see if the server already exists
-      let server = await Server.findById(id);
-      //if there is an existing server grab it and update it with the new values
-      if (server) {
-        //update
-        server = await Server.findOneAndUpdate(
-          { id: id },
-          { $set: updatedServer },
-          { new: true },
-          { upsert: true }
-        );
-        console.log(server);
-        return res.json(server);
-      }
       if (req.user.access !== 'mgr') {
         return res.status(400).json({
           errors: [{ msg: 'You do not have authorization to add a server.' }],
         });
       }
-
       //create a new instance of server
       server = new Server({
         name,
@@ -76,7 +53,6 @@ router.post(
         phone,
         venue,
       });
-
       await server.save();
       res.json(server);
     } catch (err) {
@@ -85,6 +61,43 @@ router.post(
     }
   }
 );
+
+//@router      POST api/servers
+//@desc        Update a server
+//@access      Private
+router.put(`/:id`, auth, async (req, res) => {
+  const { name, email, phone, venue, active } = req.body;
+
+  //build the new server
+  const updatedServer = {};
+  if (name) updatedServer.name = name;
+  if (email) updatedServer.email = email;
+  if (phone) updatedServer.phone = phone;
+  if (venue) updatedServer.venue = venue;
+  updatedServer.active = active;
+  try {
+    //find the contact by ID
+    let server = await Server.findById(req.params.id);
+    if (!server) return res.status(404).json({ msg: 'Server not found.' });
+    //make sure that this user is authorized to make changes to this server
+    if (server.venue.toString() != req.user.venue.toString()) {
+      return res
+        .status(401)
+        .json({ msg: 'Not authorized to make changes to this server.' });
+    }
+
+    server = await Server.findByIdAndUpdate(
+      req.params.id,
+      { $set: updatedServer },
+      { new: true }
+    );
+
+    res.json(server);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 //@route    DELETE api/servers/:id
 //@desc     DELETE a server

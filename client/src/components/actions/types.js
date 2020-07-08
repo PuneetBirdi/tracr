@@ -17,10 +17,11 @@ export const CLEAR_FILTER = 'CLEAR_FILTER';
 
 //SERVER TYPES
 export const GET_SERVERS = 'GET_SERVERS';
-export const DELETE_SERVER = 'DELETE_SERVER';
+export const REMOVE_SERVER = 'REMOVE_SERVER';
 export const ADD_SERVER = 'ADD_SERVER';
 export const SERVER_ERROR = 'SERVER_ERROR';
 export const SET_CURRENT_SERVER = 'SET_CURRENT_SERVER';
+export const UPDATE_SERVER = 'UPDATE_SERVER';
 
 //VENUE TYPES
 export const GET_VENUE = 'GET_VENUE';
