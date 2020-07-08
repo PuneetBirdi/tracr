@@ -4,6 +4,7 @@ import {
   DELETE_SERVER,
   SERVER_ERROR,
   SET_LOADING,
+  SET_CURRENT_SERVER,
 } from './types';
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
@@ -24,7 +25,7 @@ export const loadServers = () => async (dispatch) => {
   }
 };
 
-export const addServer = (newServer) => (dispatch) => {
+export const addServer = (newServer) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -45,7 +46,10 @@ export const addServer = (newServer) => (dispatch) => {
   }
 };
 
-//Delete a tech
+export const setCurrentServer = (server) => async (dispatch) => {
+  dispatch({ type: SET_CURRENT_SERVER, payload: server });
+};
+//Delete a server
 export const deleteServer = (id) => async (dispatch) => {
   try {
     await axios.delete(`/api/servers/${id}`);

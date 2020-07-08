@@ -164,7 +164,7 @@ const Home = ({ addParty, loadUser, auth: { user, loading } }) => {
                 value={guests[1]}
                 onChange={(e) => addGuest(1, e.target.value)}
               />
-              <label htmlFor='guest1'>Guest 2</label>
+              <label htmlFor='guest'>Guest 2</label>
             </div>
             <div className='input-field col s12'>
               <input

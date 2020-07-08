@@ -13,13 +13,14 @@ export const PARTY_ERROR = 'PARTY_ERROR';
 export const CLEAR_PARTIES = 'CLEAR_PARTIES';
 export const SEARCH_PARTIES = 'SEARCH_PARTIES';
 export const FILTER_PARTIES = 'FILTER_PARTIES';
-export const CLEAR_FILTER = 'CLEAR_FILTER'
+export const CLEAR_FILTER = 'CLEAR_FILTER';
 
 //SERVER TYPES
 export const GET_SERVERS = 'GET_SERVERS';
 export const DELETE_SERVER = 'DELETE_SERVER';
 export const ADD_SERVER = 'ADD_SERVER';
 export const SERVER_ERROR = 'SERVER_ERROR';
+export const SET_CURRENT_SERVER = 'SET_CURRENT_SERVER';
 
 //VENUE TYPES
 export const GET_VENUE = 'GET_VENUE';

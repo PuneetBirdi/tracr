@@ -1,15 +1,38 @@
 import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { loadServers } from '../actions/serverActions';
+import {
+  loadServers,
+  addServer,
+  setCurrentServer,
+} from '../actions/serverActions';
 import Preloader from '../layout/Preloader';
 import 'materialize-css/dist/css/materialize.min.css';
 import AddServer from '../modals/AddServer';
+import EditServer from '../modals/EditServer';
 
-const ManageStaff = ({ loading, servers: { servers }, loadServers }) => {
+const ManageStaff = ({
+  loading,
+  servers: { servers },
+  loadServers,
+  addServer,
+  setCurrentServer,
+}) => {
   useEffect(() => {
     loadServers();
     //eslint-disable-next-line
   }, []);
+
+  const remove = (id, name, email, phone) => {
+    const removedServer = {
+      id,
+      name,
+      email,
+      phone,
+      active: false,
+    };
+
+    addServer(removedServer);
+  };
 
   if (loading || servers === null) {
     return (
@@ -30,14 +53,28 @@ const ManageStaff = ({ loading, servers: { servers }, loadServers }) => {
           </li>
         ) : (
           servers.map((server) => (
-            <li class='collection-item avatar' key={server._id}>
-              <p>
-                {server.name}
-                <br></br>
-                <small>{server.email}</small>
-                <br></br>
-                <small>{server.phone}</small>
-              </p>
+            <li class='collection-item avatar flex' key={server._id}>
+              <div className=''>
+                <p>
+                  {server.name}
+                  <br></br>
+                  <small>{server.email}</small>
+                  <br></br>
+                  <small>{server.phone}</small>
+                </p>
+              </div>
+              <div className=''>
+                <EditServer server={server} />
+                <button
+                  className='btn waves-effect  red waves-light'
+                  name='action'
+                  onClick={(e) =>
+                    remove(server._id, server.name, server.email, server.phone)
+                  }
+                >
+                  <i className='material-icons'>delete</i>
+                </button>
+              </div>
             </li>
           ))
         )}
@@ -52,4 +89,8 @@ const mapStateToProps = (state) => ({
   servers: state.server,
 });
 
-export default connect(mapStateToProps, { loadServers })(ManageStaff);
+export default connect(mapStateToProps, {
+  addServer,
+  loadServers,
+  setCurrentServer,
+})(ManageStaff);
