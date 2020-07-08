@@ -81,8 +81,8 @@ router.post(
         guests,
         notes,
       });
-      await party.save();
-      res.send('Party Saved');
+      const newParty = await party.save();
+      res.json(newParty);
       console.log('Party Saved.');
     } catch (err) {
       console.error(err.message);

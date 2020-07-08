@@ -33,14 +33,13 @@ export const addServer = (newServer) => async (dispatch) => {
     },
   };
   try {
-    setLoading();
-    const res = axios.post('api/servers', newServer, config);
+    const res = await axios.post('api/servers', newServer, config);
     dispatch({
       type: ADD_SERVER,
       payload: res.data,
     });
-    console.log(res);
   } catch (err) {
+    console.log('error');
     dispatch({
       type: SERVER_ERROR,
       payload: err,
@@ -56,7 +55,7 @@ export const updateServer = (updatedServer) => async (dispatch) => {
   };
   try {
     setLoading();
-    const res = axios.put(
+    const res = await axios.put(
       `/api/servers/${updatedServer.id}`,
       updatedServer,
       config

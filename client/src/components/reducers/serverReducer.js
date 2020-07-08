@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
     case ADD_SERVER:
       return {
         ...state,
-        servers: [...state.servers.servers, action.payload],
+        servers: [...state.servers, action.payload],
         loading: false,
       };
     case SET_CURRENT_SERVER:

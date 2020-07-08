@@ -20,8 +20,8 @@ const AddServer = ({ addServer, auth: { user, loading } }) => {
         name: name,
         email: email,
         phone: phone,
+        active: true,
       };
-      console.log(server);
       addServer(server);
       clearFields();
     }

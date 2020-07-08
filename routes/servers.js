@@ -24,12 +24,7 @@ router.get('/', auth, async (req, res) => {
 router.post(
   '/',
   auth,
-  [
-    check('name', 'Name is required.').not().isEmpty(),
-    check('venue', 'This server must be associated with a venue.')
-      .not()
-      .isEmpty(),
-  ],
+  [check('name', 'Name is required.').not().isEmpty()],
   async (req, res) => {
     // if there's an errors return from validation, return 400 code and the errors array
     const errors = validationResult(req);
@@ -38,23 +33,21 @@ router.post(
     }
 
     //destructure the body of the request
-    const { name, email, phone } = req.body;
+    const { name, email, phone, active } = req.body;
+
     const venue = req.user.venue;
+
     try {
-      if (req.user.access !== 'mgr') {
-        return res.status(400).json({
-          errors: [{ msg: 'You do not have authorization to add a server.' }],
-        });
-      }
       //create a new instance of server
       server = new Server({
+        venue,
         name,
         email,
+        active,
         phone,
-        venue,
       });
-      await server.save();
-      res.json(server);
+      const newServer = await server.save();
+      res.json(newServer);
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
@@ -94,6 +87,7 @@ router.put(`/:id`, auth, async (req, res) => {
 
     res.json(server);
   } catch (err) {
+    console.log('error');
     console.error(err.message);
     res.status(500).send('Server Error');
   }

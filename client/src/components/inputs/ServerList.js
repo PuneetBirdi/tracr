@@ -14,11 +14,14 @@ const ServerList = ({ loading, servers: { servers }, loadServers }) => {
   }
   return (
     <Fragment>
-      {servers.map((server) => (
-        <option key={server._id} value={server._id}>
-          {server.name}
-        </option>
-      ))}
+      {servers.map(
+        (server) =>
+          server.active && (
+            <option key={server._id} value={server._id}>
+              {server.name}
+            </option>
+          )
+      )}
       <AddServer />
     </Fragment>
   );

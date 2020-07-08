@@ -81,7 +81,7 @@ const ManageStaff = ({
                         )
                       }
                     >
-                      <i className='material-icons'>delete</i>
+                      <i className='material-icons'>remove_circle</i>
                     </button>
                   </div>
                 </li>
