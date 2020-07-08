@@ -34,16 +34,6 @@ const Login = ({
     }
   };
 
-  // //Check if the user is already logged in
-  useEffect(() => {
-    if (isAuthenticated) {
-      history.push('/');
-    } else if (error !== null) {
-      M.toast({ html: error, classes: 'red' });
-    }
-    //eslint-disable-next-line
-  }, [history, isAuthenticated]);
-
   if (isAuthenticated) {
     return <Redirect to='/' />;
   }
