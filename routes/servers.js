@@ -9,7 +9,9 @@ const auth = require('../middleware/auth');
 //@access       Private
 router.get('/', auth, async (req, res) => {
   try {
-    const servers = await Server.find({ venue: req.user.venue });
+    const servers = await Server.find({ venue: req.user.venue }).sort({
+      active: -1,
+    });
 
     res.json(servers);
   } catch (err) {

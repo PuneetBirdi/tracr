@@ -104,6 +104,11 @@ const ManageStaff = ({
               <li className='collection-item avatar flex' key={server._id}>
                 <div className=''>
                   <p>
+                    {!server.active ? (
+                      <span class='badge red white-text'>Deactivated</span>
+                    ) : (
+                      <span class='badge green white-text'>Active</span>
+                    )}
                     {server.name}
                     <br></br>
                     <small>{server.email}</small>
@@ -112,9 +117,11 @@ const ManageStaff = ({
                   </p>
                 </div>
                 <div className=''>
-                  <EditServer server={server} />
+                  {server.active && <EditServer server={server} />}
                   <button
-                    className='btn waves-effect  red waves-light'
+                    className={`btn waves-effect  red waves-light ${
+                      !server.active && 'disabled'
+                    }`}
                     name='action'
                     onClick={(e) =>
                       remove(
