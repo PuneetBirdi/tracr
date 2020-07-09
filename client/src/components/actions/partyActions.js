@@ -50,7 +50,7 @@ export const getParties = (query) => async (dispatch) => {
   } else if (query) {
     try {
       const res = await axios.get(
-        `/api/parties/history?contactName=${query.contactName}&server=${query.server}`
+        `/api/parties/history?startDate=${query.startDate}&endDate=${query.endDate}&server=${query.server}`
       );
       dispatch({
         type: GET_PARTIES,

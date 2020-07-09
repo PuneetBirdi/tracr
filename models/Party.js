@@ -8,7 +8,7 @@ const PartySchema = new mongoose.Schema({
   },
   time: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
   server: {
     type: mongoose.Schema.Types.ObjectId,

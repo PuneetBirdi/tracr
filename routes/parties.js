@@ -16,8 +16,10 @@ router.get('/history', auth, async (req, res) => {
     try {
       const parties = await Party.find({
         venue: req.user.venue,
-      }).populate('server', ['name']);
-      result = parties.reverse();
+      })
+        .populate('server', ['name'])
+        .sort({ time: -1 });
+      result = parties;
       res.json(result);
     } catch (err) {
       console.error(err.message);
@@ -25,10 +27,18 @@ router.get('/history', auth, async (req, res) => {
     }
   } else if (req.query) {
     try {
+      console.log(req.query);
       const parties = await Party.find({
         server: req.query.server,
-      }).populate('server', ['name']);
-      result = parties.reverse();
+        time: {
+          $gte: req.query.endDate,
+          $lte: req.query.startDate,
+        },
+      })
+        .populate('server', ['name'])
+        .sort({ time: -1 });
+      result = parties;
+      console.log(result);
       res.json(result);
     } catch (err) {
       console.error(err.message);
