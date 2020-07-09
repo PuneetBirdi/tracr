@@ -83,7 +83,6 @@ router.post(
       });
       const newParty = await party.save();
       res.json(newParty);
-      console.log('Party Saved.');
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
