@@ -27,9 +27,9 @@ if (localStorage.token) {
 
 const App = () => {
   useEffect(() => {
+    M.AutoInit();
     store.dispatch(loadUser());
     //Initialize Materialize JS
-    M.AutoInit();
   }, []);
 
   return (
@@ -41,12 +41,11 @@ const App = () => {
             <main>
               <div className='container'>
                 <Switch>
+                  <Route exact path='/login' component={Login} />
+                  <Route exact path='/about' component={About} />
                   <PrivateRoute exact path='/' component={Home} />
                   <PrivateRoute exact path='/history' component={History} />
                   <PrivateRoute exact path='/staff' component={ManageStaff} />
-                  <Route exact path='/login' component={Login} />
-                  <Route exact path='/about' component={About} />
-                  <AddServer />
                 </Switch>
               </div>
             </main>
