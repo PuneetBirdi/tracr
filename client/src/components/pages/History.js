@@ -63,6 +63,7 @@ const History = ({
 
   const clearQuery = () => {
     setServer('');
+    setDays('');
     getParties();
   };
 
@@ -119,6 +120,7 @@ const History = ({
                   </button>
                   <button
                     className='btn waves-effect mx-1 red waves-light'
+                    type='button'
                     onClick={(e) => {
                       clearQuery();
                     }}

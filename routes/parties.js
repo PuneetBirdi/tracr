@@ -11,7 +11,7 @@ const { query } = require('express');
 //@desc         Get all the parties that have been to this venue
 //@access       Private
 router.get('/history', auth, async (req, res) => {
-  const server = req.query.server;
+  console.log(req.query);
   if (JSON.stringify(req.query) === '{}') {
     try {
       const parties = await Party.find({
@@ -25,20 +25,32 @@ router.get('/history', auth, async (req, res) => {
       console.error(err.message);
       res.status(500).send('Server Error');
     }
-  } else if (req.query) {
+  } else {
     try {
-      console.log(req.query);
-      const parties = await Party.find({
-        server: req.query.server,
-        time: {
-          $gte: req.query.endDate,
-          $lte: req.query.startDate,
-        },
-      })
+      //CREATE A DYNAMIC QUERY OBJECT BASED ON WHICH PARAMETERS HAVE BEEN PASSED IN
+      let queryObj = {};
+
+      if (req.query.server !== '') {
+        queryObj = {
+          server: req.query.server,
+          time: {
+            $gte: req.query.endDate,
+            $lte: req.query.startDate,
+          },
+        };
+      } else {
+        queryObj = {
+          time: {
+            $gte: req.query.endDate,
+            $lte: req.query.startDate,
+          },
+        };
+      }
+
+      const parties = await Party.find(queryObj)
         .populate('server', ['name'])
         .sort({ time: -1 });
       result = parties;
-      console.log(result);
       res.json(result);
     } catch (err) {
       console.error(err.message);
