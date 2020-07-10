@@ -32,6 +32,7 @@ router.get('/history', auth, async (req, res) => {
 
       if (req.query.server !== '') {
         queryObj = {
+          venue: req.user.venue,
           server: req.query.server,
           time: {
             $gte: req.query.endDate,
@@ -40,6 +41,7 @@ router.get('/history', auth, async (req, res) => {
         };
       } else {
         queryObj = {
+          venue: req.user.venue,
           time: {
             $gte: req.query.endDate,
             $lte: req.query.startDate,

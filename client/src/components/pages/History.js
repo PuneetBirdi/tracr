@@ -105,7 +105,9 @@ const History = ({
                     </option>
                     <option value={7}>7 Days</option>
                     <option value={30}>30 Days</option>
-                    <option value={180}>180 Days</option>
+                    <option value={182}>6 Months</option>
+                    <option value={182}>1 Year</option>
+                    <option value={2000}>All</option>
                   </select>
                 </div>
               </div>
