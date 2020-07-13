@@ -10,6 +10,9 @@ const NavBar = ({ auth, logout }) => {
         <Link to='/login'>Login</Link>
       </li>
       <li>
+        <Link to='/createvenue'>Register</Link>
+      </li>
+      <li>
         <Link to='/about'>About</Link>
       </li>
     </Fragment>

@@ -140,7 +140,7 @@ const History = ({
                   <input
                     id='search'
                     type='search'
-                    placeholder='Filter by : Contact Name'
+                    placeholder='Filter results by : Contact Name'
                     required
                     onChange={onChange}
                   />

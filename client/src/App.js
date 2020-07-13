@@ -10,6 +10,7 @@ import Home from './components/pages/Home';
 import History from './components/pages/History';
 import About from './components/pages/About';
 import ManageStaff from './components/pages/ManageStaff';
+import CreateVenue from './components/auth/register/CreateVenue';
 //LAYOUT COMPONENTS
 import NavBar from './components/layout/NavBar';
 import AddServer from './components/modals/AddServer';
@@ -42,6 +43,7 @@ const App = () => {
               <div className='container'>
                 <Switch>
                   <Route exact path='/login' component={Login} />
+                  <Route exact path='/createvenue' component={CreateVenue} />
                   <Route exact path='/about' component={About} />
                   <PrivateRoute exact path='/' component={Home} />
                   <PrivateRoute exact path='/history' component={History} />
