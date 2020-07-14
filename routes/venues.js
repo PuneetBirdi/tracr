@@ -49,7 +49,7 @@ router.post(
 
     try {
       //Check if a venue has already been added with that email address
-      let user = await Venue.findOne({ name: name });
+      let user = await Venue.findOne({ email: email });
       if (user) {
         return res.status(400).json({
           errors: [{ msg: 'Venue of this name already exists.' }],
@@ -64,8 +64,8 @@ router.post(
         phone,
       });
 
-      await venue.save();
-      res.send('Venue Added');
+      const newVenue = await venue.save();
+      res.json(newVenue);
     } catch (err) {}
     console.error(err.message);
     res.status(500).send('Server Error.');

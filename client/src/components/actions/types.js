@@ -6,7 +6,10 @@ export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
 
 //REGISTRATION TYPES
-export const GET_VENUE_RESULT = 'GET_VENUE_RESULT';
+export const SET_VENUE = 'SET_VENUE';
+export const SET_USER = 'SET_USER';
+export const VENUE_CREATE_ERROR = 'VENUE_CREATE_ERROR';
+export const USER_REGISTER_ERROR = 'USER_REGISTER_ERROR';
 
 //PARTY TYPES
 export const GET_PARTIES = 'GET_PARTIES';

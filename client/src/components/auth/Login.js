@@ -50,13 +50,15 @@ const Login = ({
                 className='validate'
                 onChange={onChange}
               />
-              <label>Email</label>
+              <label htmlFor='email' className='active'>
+                Email
+              </label>
             </div>
           </div>
           <div className='row'>
             <div className='input-field'>
               <input type='password' name='password' onChange={onChange} />
-              <label htmlFor='lastName' className='active'>
+              <label htmlFor='password' className='active'>
                 Password
               </label>
             </div>
@@ -72,9 +74,9 @@ const Login = ({
           </button>
           <div className=''>
             <p>Test credentials:</p>
-            <strong>Email: mgr@gmail.com</strong>
+            <strong>Email: testAccount@gmail.com</strong>
             <br></br>
-            <strong>Password: 1452</strong>
+            <strong>Password: testing</strong>
           </div>
         </div>
       </form>

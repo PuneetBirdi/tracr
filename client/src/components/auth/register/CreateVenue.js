@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
+import { setNewVenue } from '../../actions/registerActions';
 
 const CreateVenue = ({
   history,
+  setNewVenue,
   auth: { error, isAuthenticated, loading },
   login,
 }) => {
@@ -17,7 +13,7 @@ const CreateVenue = ({
     city: '',
     province: '',
     postalCode: '',
-    country: '',
+    country: 'Canada',
   });
   const [venue, setVenue] = useState({
     name: '',
@@ -28,7 +24,8 @@ const CreateVenue = ({
   const onSubmit = (e) => {
     e.preventDefault();
     const newVenue = { ...venue, address };
-    console.log(newVenue);
+    setNewVenue(newVenue);
+    history.push('/createuser');
   };
   return (
     <div>
@@ -56,6 +53,7 @@ const CreateVenue = ({
                 type='tel'
                 className='validate'
                 pattern='[0-9]{10,}'
+                required
                 value={venue.phone}
                 onChange={(e) => setVenue({ ...venue, phone: e.target.value })}
               />
@@ -67,6 +65,7 @@ const CreateVenue = ({
                 name='venue-email'
                 type='email'
                 className='validate'
+                required
                 value={venue.email}
                 onChange={(e) => {
                   setVenue({ ...venue, email: e.target.value });
@@ -155,7 +154,6 @@ const CreateVenue = ({
                 required
                 value='Canada'
               />
-              <label htmlFor='country'>Country</label>
             </div>
           </div>
         </div>
@@ -178,4 +176,4 @@ const mapStateToProps = (state) => ({
   register: state.register,
 });
 
-export default connect(mapStateToProps)(CreateVenue);
+export default connect(mapStateToProps, { setNewVenue })(CreateVenue);
