@@ -5,6 +5,9 @@ export const LOGOUT = 'LOGOUT';
 export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
 
+//REGISTRATION TYPES
+export const GET_VENUE_RESULT = 'GET_VENUE_RESULT';
+
 //PARTY TYPES
 export const GET_PARTIES = 'GET_PARTIES';
 export const ADD_PARTY = 'ADD_PARTY';

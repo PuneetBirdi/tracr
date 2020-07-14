@@ -3,6 +3,11 @@ import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/routing/PrivateRoute';
+import {
+  SwitchTransition,
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
 import './App.css';
 //PAGE COMPONENTS
 import Login from './components/auth/Login';
@@ -43,8 +48,11 @@ const App = () => {
               <div className='container'>
                 <Switch>
                   <Route exact path='/login' component={Login} />
+
                   <Route exact path='/createvenue' component={CreateVenue} />
+
                   <Route exact path='/about' component={About} />
+
                   <PrivateRoute exact path='/' component={Home} />
                   <PrivateRoute exact path='/history' component={History} />
                   <PrivateRoute exact path='/staff' component={ManageStaff} />

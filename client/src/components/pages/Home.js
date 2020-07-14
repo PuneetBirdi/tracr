@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { loadUser } from '../actions/authActions';
 import { addParty } from '../actions/partyActions';
-import { getParties } from '../actions/partyActions';
 import Preloader from '../layout/Preloader';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import ServerList from '../inputs/ServerList';
@@ -251,6 +250,4 @@ const mapStateToProps = (state) => ({
   party: state.party,
 });
 
-export default connect(mapStateToProps, { getParties, addParty, loadUser })(
-  Home
-);
+export default connect(mapStateToProps, { addParty, loadUser })(Home);

@@ -12,65 +12,156 @@ const CreateVenue = ({
   auth: { error, isAuthenticated, loading },
   login,
 }) => {
-  // setting the user Input component state
-  const [place, setPlace] = useState('');
-  const [placeID, setPlaceID] = useState('');
-
-  const handleSelect = async (selection, id) => {
-    setPlace(selection);
-    setPlaceID(id);
-  };
-
-  const onChange = (e) => {
-    console.log('change');
-  };
+  const [address, setAddress] = useState({
+    street: '',
+    city: '',
+    province: '',
+    postalCode: '',
+    country: '',
+  });
+  const [venue, setVenue] = useState({
+    name: '',
+    phone: '',
+    email: '',
+  });
 
   const onSubmit = (e) => {
     e.preventDefault();
+    const newVenue = { ...venue, address };
+    console.log(newVenue);
   };
-
-  const listStyling = { padding: ' 0 0.5rem' };
-
-  const renderFunc = ({
-    getInputProps,
-    getSuggestionItemProps,
-    suggestions,
-  }) => (
-    <div className='autocomplete-root'>
-      <input {...getInputProps()} />
-      <div className='autocomplete-dropdown-container'>
-        {loading && <div>Loading...</div>}
-        {suggestions.map((suggestion, key) => (
-          <div
-            className='valign-wrapper'
-            key={key}
-            {...getSuggestionItemProps(suggestion)}
-          >
-            <p key={key}>{suggestion.description}</p>
-            <p>{suggestion.id}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
   return (
     <div>
-      <form>
-        <div>
-          <h4>Where?</h4>
-          <div className='row'>
-            <PlacesAutocomplete
-              value={place}
-              onChange={setPlace}
-              onSelect={handleSelect}
-            >
-              {renderFunc}
-            </PlacesAutocomplete>
+      <h5>Register Your Venue</h5>
+      <form className='col s12 pad-1' onSubmit={onSubmit}>
+        <div className='row z-depth '>
+          <div className='col s12'>
+            <div className='input-field col s12'>
+              <input
+                id='venue-name'
+                type='text'
+                className='validate'
+                required
+                value={venue.name}
+                onChange={(e) => {
+                  setVenue({ ...venue, name: e.target.value });
+                }}
+              />
+              <label htmlFor='venue-name'>Venue Name</label>
+            </div>
+            <div className='input-field col s6'>
+              <input
+                id='venue-phone'
+                name='venue-phone'
+                type='tel'
+                className='validate'
+                pattern='[0-9]{10,}'
+                value={venue.phone}
+                onChange={(e) => setVenue({ ...venue, phone: e.target.value })}
+              />
+              <label htmlFor='phone'>Phone</label>
+            </div>
+            <div className='input-field col s6'>
+              <input
+                id='venue-email'
+                name='venue-email'
+                type='email'
+                className='validate'
+                value={venue.email}
+                onChange={(e) => {
+                  setVenue({ ...venue, email: e.target.value });
+                }}
+              />
+              <label htmlFor='email'>Email</label>
+            </div>
+          </div>
+          <div className='col s6'>
+            <div className='input-field col s12'>
+              <input
+                id='street-address'
+                type='text'
+                className='validate'
+                required
+                value={address.street}
+                onChange={(e) =>
+                  setAddress({ ...address, street: e.target.value })
+                }
+              />
+              <label htmlFor='street-address'>Street Address</label>
+            </div>
+            <div className='input-field col s12'>
+              <input
+                id='city'
+                type='text'
+                className='validate'
+                required
+                value={address.city}
+                onChange={(e) =>
+                  setAddress({ ...address, city: e.target.value })
+                }
+              />
+              <label htmlFor='city'>City</label>
+            </div>
+            <div className='input-field col s12'>
+              <select
+                id='province'
+                type='text'
+                className='browser-default'
+                required
+                value={address.province}
+                onChange={(e) =>
+                  setAddress({ ...address, province: e.target.value })
+                }
+              >
+                <option value='' disabled defaultValue>
+                  Select Province
+                </option>
+                <option value='Alberta'>Alberta</option>
+                <option value='British Columbia'>British Columbia</option>
+                <option value='Manitoba'>Manitoba</option>
+                <option value='New Brunswick'>Newfoundland and Labrador</option>
+                <option value='Northwest Territories'>
+                  Northwest Territories
+                </option>
+                <option value='Nova Scotia'>Nova Scotia</option>
+                <option value='Nunavut'>Nunavut</option>
+                <option value='Ontario'>Ontario</option>
+                <option value='Prince Edward Island'>
+                  Prince Edward Island
+                </option>
+                <option value='Quebec'>Quebec</option>
+                <option value='Saskatchewan'>Saskatchewan</option>
+                <option value='Yukon'>Yukon</option>
+              </select>
+            </div>
+            <div className='input-field col s12'>
+              <input
+                id='postal-code'
+                type='text'
+                className='validate'
+                required
+                value={address.postalCode}
+                onChange={(e) =>
+                  setAddress({ ...address, postalCode: e.target.value })
+                }
+              />
+              <label htmlFor='postal-code'>Postal Code</label>
+            </div>
+            <div className='input-field col s12'>
+              <input
+                id='country'
+                type='text'
+                className='validate'
+                required
+                value='Canada'
+              />
+              <label htmlFor='country'>Country</label>
+            </div>
           </div>
         </div>
-        <div className='modal-footer'>
+        <div className='footer right-align'>
           <button
-            className='btn waves-effect waves-light'
+            className='btn waves-effect  green waves-light'
             type='submit'
             name='action'
           >
@@ -84,6 +175,7 @@ const CreateVenue = ({
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  register: state.register,
 });
 
 export default connect(mapStateToProps)(CreateVenue);

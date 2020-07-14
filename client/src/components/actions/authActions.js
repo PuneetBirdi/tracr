@@ -67,6 +67,14 @@ export const logout = () => (dispatch) => {
   });
 };
 
+//REGISTRATION USER FLOW ===============================
+
+export const getVenueData = () => (dispatch) => {
+  dispatch(setLoading());
+  try {
+  } catch (err) {}
+};
+
 //Set loading to true
 export const setLoading = () => {
   return {

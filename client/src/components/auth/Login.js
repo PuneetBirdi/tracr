@@ -38,7 +38,7 @@ const Login = ({
     return <Redirect to='/' />;
   }
   return (
-    <div style={{ width: '30%', margin: '0 auto', alignSelf: 'center' }}>
+    <div style={{ width: '45%', margin: '0 auto', alignSelf: 'center' }}>
       <form onSubmit={onSubmit}>
         <div>
           <h4>Login</h4>

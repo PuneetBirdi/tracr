@@ -11,7 +11,6 @@ const { query } = require('express');
 //@desc         Get all the parties that have been to this venue
 //@access       Private
 router.get('/history', auth, async (req, res) => {
-  console.log(req.query);
   if (JSON.stringify(req.query) === '{}') {
     try {
       const parties = await Party.find({
