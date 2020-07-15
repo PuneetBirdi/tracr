@@ -87,6 +87,7 @@ const AddServer = ({ addServer, auth: { user, loading } }) => {
             <input
               type='text'
               name='name'
+              value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <label htmlFor='name' className='active'>
@@ -99,6 +100,7 @@ const AddServer = ({ addServer, auth: { user, loading } }) => {
             <input
               type='text'
               name='name'
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <label htmlFor='name' className='active'>
@@ -109,6 +111,7 @@ const AddServer = ({ addServer, auth: { user, loading } }) => {
             <input
               type='text'
               name='name'
+              value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
             <label htmlFor='name' className='active'>

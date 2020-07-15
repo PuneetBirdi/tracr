@@ -30,7 +30,7 @@ const Login = ({
       login(user);
       setTimeout(() => {
         history.push('/');
-      }, 500);
+      }, 1000);
     }
   };
 

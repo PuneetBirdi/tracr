@@ -28,6 +28,7 @@ const CreateUser = ({ history, register, setNewUser }) => {
         access: 'mgr',
       };
       setNewUser(newUser);
+      M.toast({ html: 'All done.', classes: 'green' });
       history.push('/login');
     }
   };
