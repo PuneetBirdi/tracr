@@ -77,6 +77,16 @@ const Login = ({
             <strong>Email: testAccount@gmail.com</strong>
             <br></br>
             <strong>Password: testing</strong>
+            <p>
+              <strong>Notes:</strong>
+              <ul>
+                <li>
+                  BUG: Firefox does not support datetime picker so it's only
+                  displaying a text box. Will switch to a split input model.
+                </li>
+                <li>TODO: Pagination for party history.</li>
+              </ul>
+            </p>
           </div>
         </div>
       </form>

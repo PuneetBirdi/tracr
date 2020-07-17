@@ -40,6 +40,9 @@ const NavBar = ({ auth, logout }) => {
     <Fragment>
       <nav className='blue darken-2'>
         <div className='nav-wrapper'>
+          <a href='#' class='brand-logo' style={{ paddingLeft: '1.0rem' }}>
+            Tracr
+          </a>
           <a href='#!' data-target='mobile-demo' className='sidenav-trigger'>
             <i className='material-icons'>menu</i>
           </a>
