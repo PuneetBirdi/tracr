@@ -1,4 +1,5 @@
 ### tracr
+[LIVE SITE](https://warm-tor-19038.herokuapp.com/login)
 
 This is my first MERN application, using Redux for state management. It's an application that allows restaurants and bars to fully comply with contact tracing requirements set forth by Toronto Public Health in the wake of COVID-19.
 
